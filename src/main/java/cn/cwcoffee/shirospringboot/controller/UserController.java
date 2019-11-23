@@ -28,8 +28,6 @@ public class UserController {
      */
     @RequestMapping("/login")
     public String login(String name, String password, Model model){
-
-        System.out.println(userService.findByName(name));
         /**
          * 使用Shiro编写用户认证逻辑
          */

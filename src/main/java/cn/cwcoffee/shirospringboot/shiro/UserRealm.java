@@ -4,6 +4,7 @@ import cn.cwcoffee.shirospringboot.domain.User;
 import cn.cwcoffee.shirospringboot.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,11 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         System.out.println("执行授权逻辑");
-        return null;
+        //给资源进行授权
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        //添加资源的授权字符串
+        info.addStringPermission("user:add");
+        return info;
     }
     /**
      * 执行认证逻辑

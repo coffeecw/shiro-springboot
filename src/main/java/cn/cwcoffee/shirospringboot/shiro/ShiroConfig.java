@@ -15,7 +15,7 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
 
-    /**
+       /**
      * 创建ShiroFilterFactoryBean
      */
     @Bean
@@ -39,15 +39,23 @@ public class ShiroConfig {
         filterMap.put("/update","authc");*/
 
         //不过滤主页，主页可以访问
-       filterMap.put("/","anon");
-       filterMap.put("/index","anon");
-       //放行登录认证逻辑请求
-       filterMap.put("/login","anon");
+        filterMap.put("/","anon");
+        filterMap.put("/index","anon");
+        //放行登录认证逻辑请求
+        filterMap.put("/login","anon");
+
+        //授权过滤器
+        //注意当前授权拦截后,shiro会自动跳转到未授权页面
+        filterMap.put("/add","perms[user:add]");
+
         //所有的一级请求路径会被拦截,/**代表所有的请求路径都会被拦截
-       filterMap.put("/*","authc");
+        filterMap.put("/*","authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
+        //修改被拦截后跳转的登录页面
         shiroFilterFactoryBean.setLoginUrl("/toLogin");
+        //设置未授权的提示页面
+        shiroFilterFactoryBean.setUnauthorizedUrl("/unAuth");
         return shiroFilterFactoryBean;
     }
 

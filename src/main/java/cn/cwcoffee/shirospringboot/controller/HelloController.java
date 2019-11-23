@@ -29,5 +29,8 @@ public class HelloController {
         return "login";
     }
 
-
+    @RequestMapping("/unAuth")
+    public String unAuth(){
+        return "/unAuth";
+    }
 }
