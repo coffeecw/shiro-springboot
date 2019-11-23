@@ -7,6 +7,15 @@ public class User {
     private Integer id;
     private String name;
     private String password;
+    private String perms;
+
+    public String getPerms() {
+        return perms;
+    }
+
+    public void setPerms(String perms) {
+        this.perms = perms;
+    }
 
     public Integer getId() {
         return id;
@@ -38,6 +47,7 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", perms='" + perms + '\'' +
                 '}';
     }
 }
