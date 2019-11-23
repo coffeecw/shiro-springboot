@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:shiro="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>主页</title>
 </head>
 <body>
-添加用户功能: <a href="add">添加用户</a><br/>
-修改用户功能: <a href="update">修改用户</a>
+<div shiro:hasPermission="user:add">
+    添加用户功能: <a href="add">添加用户</a>
+</div>
+
+<div shiro:hasPermission="user:update">
+    修改用户功能: <a href="update">修改用户</a>
+</div>
+<a href="/toLogin">登录</a>
 </body>
 </html>

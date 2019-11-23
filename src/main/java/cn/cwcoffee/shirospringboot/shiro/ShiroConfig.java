@@ -1,5 +1,6 @@
 package cn.cwcoffee.shirospringboot.shiro;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -79,5 +80,12 @@ public class ShiroConfig {
         return new UserRealm();
     }
 
+    /**
+     * 配置ShiroDialect,用于thymeleaf和shiro标签配合使用
+     */
+    @Bean
+    public ShiroDialect getShiroDialect(){
+        return new ShiroDialect();
+    }
 
 }
